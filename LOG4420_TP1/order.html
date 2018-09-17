@@ -1,34 +1,61 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-  <meta charset="UTF-8">
-  <title>OnlineShop - Commande</title>
+    <meta charset="UTF-8">
+    <title>OnlineShop - Commande</title>
 </head>
+
 <body>
-<header>
-    <img src="assets/img/logo.svg">
-    <nav>
-        <ul>
-            <li>
-                <a href="index.html">Accueil</a>
-            </li>
-            <li>
-                <a href="products.html">Produits</a>
-            </li>
-            <li>
-                <a href="contact.html">Contact</a>
-            </li>
-            <li>
-                <a href="shopping-cart.html">Panier</a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<main>
-    Contenu principal
-</main>
-<footer>
-    Brandon Roberge (1794251) et Julien Dufresne (1793002)
-</footer>
+    <header>
+        <img src="assets/img/logo.svg">
+        <nav>
+            <ul>
+                <li>
+                    <a href="index.html">Accueil</a>
+                </li>
+                <li>
+                    <a href="products.html">Produits</a>
+                </li>
+                <li>
+                    <a href="contact.html">Contact</a>
+                </li>
+                <li>
+                    <a href="shopping-cart.html">Panier</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Formulaire de paiement</h1>
+        <section>
+            <form action="confirmation.html">
+                <section>
+                    <h3>Contact</h3>
+                    <label for="first-name">Prénom</label>
+                    <input id="first-name" type="text" required>
+                    <label for="last-name">Nom</label>
+                    <input id="last-name" type="text" required>
+                    <label for="email">Adresse courriel</label>
+                    <input id="email" type="email" required>
+                    <label for="phone">Numéro de téléphone</label>
+                    <input id="phone" type="tel" required>
+                </section>
+                <section>
+                    <h3>Paiement</h3>
+                    <label for="credit-card">Numéro de carte de crédit </label>
+                    <input id="credit-card" type="text" required>
+                    <label for="credit-card-expiry">Date d’expiration de la carte</label>
+                    <input id="credit-card-expiry" type="date" required>
+                </section>
+
+                <button>Payer</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        Brandon Roberge (1794251) et Julien Dufresne (1793002)
+    </footer>
 </body>
+
 </html>
