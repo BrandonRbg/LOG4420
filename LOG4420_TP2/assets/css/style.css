@@ -88,3 +88,78 @@ main.content {
     min-height: calc(100% - 60px);
     margin-bottom: -70px !important;
 }
+
+.shopping-card {
+    width: 100%;
+    border-spacing: 0 10px;
+    border-bottom: 1px solid #000;
+}
+
+tr.shopping-card-header th {
+    border-bottom: 1pt solid black;
+}
+
+.shopping-card-header {
+    text-align: left;
+}
+
+.remove-button-col {
+    width: 30px;
+}
+
+.round-button {
+    background-color: #dddddd;
+    border-radius: 50%;
+    border: none;
+    text-align: center;
+    width: 25px;
+    height: 25px;
+}
+
+.round-button:hover {
+    background-color: #bbbbbb;
+}
+
+.minus-button {
+    margin-right: 15px;
+}
+
+.plus-button {
+    margin-left: 15px;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.shopping-card-total {
+    float: right;
+}
+
+.shopping-card-buttons {
+    padding-top: 100px;
+}
+
+.command-button {
+    float: right;
+    background-color: #14597f;
+    border: 1px solid transparent;
+    color: white;
+    padding: 15px 10px 15px 10px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.clear-button {
+    background-color: #14597f;
+    border: 1px solid transparent;
+    color: white;
+    padding: 15px 10px 15px 10px;
+    border-radius: 10px;
+    text-decoration: none;
+}
+
+.product-link {
+    text-decoration: none;
+    color: #14597f;
+}
