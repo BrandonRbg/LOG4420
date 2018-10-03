@@ -284,3 +284,21 @@ main > article {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
+
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 1px solid #999999;
+    border-radius: 4px;
+    text-align: center;
+    padding: 25px;
+}
+
+.address {
+    font-style: italic;
+}
+
+.link {
+    text-decoration: none;
+    color: #14597f;
+}
