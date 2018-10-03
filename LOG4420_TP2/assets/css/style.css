@@ -279,3 +279,8 @@ main > article {
 .product-image {
     width: 100%;
 }
+
+.order-contact {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}

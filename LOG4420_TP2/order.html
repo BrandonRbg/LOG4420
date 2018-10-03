@@ -7,50 +7,72 @@
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
 <body>
 <header>
-    <a href="./index.html">
-        <img alt="logo" src="./assets/img/logo.svg" title="Accueil">
-    </a>
-    <nav>
-        <ul>
-            <li><a href="./index.html">Accueil</a></li>
-            <li><a href="./products.html">Produits</a></li>
-            <li><a href="./contact.html">Contact</a></li>
-            <li><a href="./shopping-cart.html">Panier</a></li>
-        </ul>
-    </nav>
+    <div class="content">
+        <a href="./index.html">
+            <img alt="logo" class="logo" src="./assets/img/logo.svg" title="Accueil">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="./index.html">Accueil</a></li>
+                <li><a href="./products.html">Produits</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+                <li><a class="shopping-cart" href="./shopping-cart.html" title="Panier">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x fa-inverse"></i>
+                        <i class="fa fa-shopping-cart fa-stack-1x"></i>
+                    </span>
+                    <span class="count">3</span>
+                </a></li>
+            </ul>
+        </nav>
+    </div>
 </header>
-<main>
+<main class="content">
     <article>
         <h1>Commande</h1>
         <form id="order-form" action="./confirmation.html" method="post">
             <section>
                 <h2>Contact</h2>
-                <label for="first-name">Prénom</label>
-                <input id="first-name" name="first-name" type="text" placeholder="Prénom" required>
-
-                <label for="last-name">Nom</label>
-                <input id="last-name" name="last-name" type="text" placeholder="Nom" required>
-
-                <label for="email">Adresse courriel</label>
-                <input id="email" name="email" type="email" placeholder="Adresse courriel" required>
-
-                <label for="phone">Téléphone</label>
-                <input id="phone" name="phone" type="tel" placeholder="###-###-####" required>
+                <div class="order-contact">
+                    <div class="form-control">
+                        <label for="first-name">Prénom</label>
+                        <input id="first-name" name="first-name" type="text" placeholder="Prénom" required>
+                    </div>
+                    <div class="form-control">
+                        <label for="last-name">Nom</label>
+                        <input id="last-name" name="last-name" type="text" placeholder="Nom" required>
+                    </div>
+                    <div class="form-control">
+                        <label for="email">Adresse courriel</label>
+                        <input id="email" name="email" type="email" placeholder="Adresse courriel" required>
+                    </div>
+                    <div class="form-control">
+                        <label for="phone">Téléphone</label>
+                        <input id="phone" name="phone" type="tel" placeholder="###-###-####" required>
+                    </div>
+                </div>
             </section>
             <section>
                 <h2>Paiement</h2>
-                <label for="credit-card">Numéro de carte de crédit</label>
-                <input id="credit-card" name="credit-card" type="text" placeholder="•••• •••• •••• ••••" required>
-
-                <label for="credit-card-expiry">Expiration (mm/aa)</label>
-                <input id="credit-card-expiry" name="credit-card-expiry" type="text" placeholder="mm/aa" required>
+                <div class="order-contact">
+                    <div class="form-control">
+                        <label for="credit-card">Numéro de carte de crédit</label>
+                        <input id="credit-card" name="credit-card" type="text" placeholder="•••• •••• •••• ••••" required>
+                    </div>
+                    <div class="form-control">
+                        <label for="credit-card-expiry">Expiration (mm/aa)</label>
+                        <input id="credit-card-expiry" name="credit-card-expiry" type="text" placeholder="mm/aa" required>
+                    </div>
+                </div>
             </section>
-            <button type="submit">Payer</button>
+            <button class="btn float-right" type="submit">Payer <i class="fa fa-angle-double-right"></i></button>
         </form>
     </article>
 </main>
 <footer>
-    <p>Par Antoine Béland et Konstantinos Lambrou-Latreille</p>
+    <div class="content">
+        <p>Par Brandon Roberge et Julien Dufresne</p>
+    </div>
 </footer>
 </body>
 </html>
