@@ -144,21 +144,6 @@ tr.shopping-card-header th {
 
 .command-button {
     float: right;
-    background-color: #14597f;
-    border: 1px solid transparent;
-    color: white;
-    padding: 15px 10px 15px 10px;
-    border-radius: 10px;
-    text-decoration: none;
-}
-
-.clear-button {
-    background-color: #14597f;
-    border: 1px solid transparent;
-    color: white;
-    padding: 15px 10px 15px 10px;
-    border-radius: 10px;
-    text-decoration: none;
 }
 
 .product-link {
