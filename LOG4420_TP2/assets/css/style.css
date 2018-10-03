@@ -248,6 +248,7 @@ main > article {
 
 #products-list {
     width: 100%;
+    margin-top: 20px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-column-gap: 10px;
@@ -301,4 +302,34 @@ main > article {
 .link {
     text-decoration: none;
     color: #14597f;
+}
+
+#image {
+    flex: 1;
+}
+
+#description {
+    flex: 1;
+}
+
+.form-control {
+    border: #999999 solid 1px;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.color-white {
+    color: white;
+}
+
+.form-input {
+    width: 95%;
+}
+
+.form-element {
+    padding: 10px 0 10px 0;
+}
+
+label {
+    font-weight: bold;
 }
