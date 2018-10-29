@@ -145,6 +145,15 @@ a:hover {
 .table tr > td {
   padding: 10px;
 }
+.notification {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: black;
+  color: white;
+  padding: 15px;
+}
 #home-img {
   float: right;
   max-width: 40%;
