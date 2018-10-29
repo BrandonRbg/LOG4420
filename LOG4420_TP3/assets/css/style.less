@@ -44,7 +44,6 @@
 @footer-background-color: #eee;
 @footer-border-color: #ccc;
 
-
 // ----- Page Setup -----
 html {
   position: relative;
@@ -59,13 +58,17 @@ body {
 a,
 button,
 select,
-input { outline: 0 !important; }
+input {
+  outline: 0 !important;
+}
 
 a {
   color: @link-color;
   text-decoration: none;
 
-  &:hover { text-decoration: underline; }
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 // ----- Generic Classes -----
@@ -122,15 +125,23 @@ a {
     transition: all ease-out 0.2s;
     flex: 1;
 
-    &:hover { background-color: @hover-color; }
+    &:hover {
+      background-color: @hover-color;
+    }
 
     &:hover,
     &active,
-    &:visited { color: @text-light-color; }
+    &:visited {
+      color: @text-light-color;
+    }
 
-    &:not(:last-of-type) { border-right: 1px solid @border-color; }
+    &:not(:last-of-type) {
+      border-right: 1px solid @border-color;
+    }
 
-    &.selected { background-color: @hover-active-color; }
+    &.selected {
+      background-color: @hover-active-color;
+    }
   }
 }
 
@@ -144,7 +155,9 @@ a {
 .form-group {
   margin-bottom: 15px;
 
-  .error { color: @warning-color; }
+  .error {
+    color: @warning-color;
+  }
 
   label {
     display: block;
@@ -152,10 +165,14 @@ a {
     font-size: 0.8em;
     font-weight: bold;
 
-    &.error { margin-top: 10px; }
+    &.error {
+      margin-top: 10px;
+    }
   }
 
-  .form-control { width: 100%; }
+  .form-control {
+    width: 100%;
+  }
 }
 
 .loading {
@@ -165,7 +182,9 @@ a {
   background-size: contain;
 }
 
-.pull-right { float: right; }
+.pull-right {
+  float: right;
+}
 
 .row {
   display: flex;
@@ -206,6 +225,16 @@ a {
   }
 }
 
+.notification {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: black;
+  color: white;
+  padding: 15px;
+}
+
 // ----- IDs -----
 #home-img {
   float: right;
@@ -217,7 +246,9 @@ a {
   max-width: 500px;
 }
 
-#product-quantity { max-width: 60px; }
+#product-quantity {
+  max-width: 60px;
+}
 
 // ----- Header Section -----
 header {
@@ -237,7 +268,9 @@ header .logo {
   height: @header-height - 2*@header-margin;
   margin: @header-margin 0;
 
-  img { height: 100%; }
+  img {
+    height: 100%;
+  }
 }
 
 header nav {
@@ -254,7 +287,7 @@ header nav {
       display: inline-block;
       margin: 0 @nav-item-margin;
 
-      > a  {
+      > a {
         line-height: @header-height;
         color: @nav-item-color;
         text-decoration: none;
@@ -274,7 +307,9 @@ header nav {
     width: @header-height - 2*@header-margin;
     height: @header-height - 2*@header-margin;
 
-    .fa-shopping-cart { color: @header-background-color; }
+    .fa-shopping-cart {
+      color: @header-background-color;
+    }
 
     .count {
       position: absolute;
@@ -289,7 +324,9 @@ header nav {
       background-color: @warning-color;
       border-radius: 16px;
 
-      &.visible { display: inline; }
+      &.visible {
+        display: inline;
+      }
     }
   }
 }
@@ -328,7 +365,9 @@ article {
     font-size: 1.2em;
   }
 
-  p { text-align: justify; }
+  p {
+    text-align: justify;
+  }
 
   hr {
     margin: 20px 0;
@@ -398,7 +437,9 @@ article {
   border: 1px solid @border-color;
   border-radius: 8px;
 
-  i { margin-bottom: 10px; }
+  i {
+    margin-bottom: 10px;
+  }
 }
 
 /* Shopping cart table */
@@ -409,15 +450,21 @@ article {
   td {
     text-align: left;
 
-    &:first-child { width: 30px; }
-    &:last-child { text-align: right; }
+    &:first-child {
+      width: 30px;
+    }
+    &:last-child {
+      text-align: right;
+    }
 
     .row {
       max-width: 100px;
       margin: 0;
       text-align: center;
 
-      .col { padding: 0; }
+      .col {
+        padding: 0;
+      }
     }
   }
 
@@ -430,7 +477,9 @@ article {
     border: none;
     border-radius: 12px;
 
-    &:hover { background-color: #bbb; }
+    &:hover {
+      background-color: #bbb;
+    }
     &[disabled] {
       cursor: default;
       background-color: #ddd;
