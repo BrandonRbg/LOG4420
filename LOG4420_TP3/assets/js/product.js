@@ -54,7 +54,7 @@ function renderProduct(product) {
 function addProductToCart(quantity) {
     storage.addProductToCard(productId, +quantity);
     badge.updateBadge();
-    notifications.showNotification("Le produit a été ajouté au panier.", 2000);
+    notifications.showNotification("Le produit a été ajouté au panier.", 5000);
 }
 
 function init() {

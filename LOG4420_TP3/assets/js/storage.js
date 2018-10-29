@@ -34,6 +34,14 @@ const storage = {
         this.write("orders", orders);
     },
 
+    getLastOrder() {
+        const orders = this.read("orders");
+        if (!orders || orders.length === 0) {
+            return null;
+        }
+        return orders[orders.length - 1];
+    },
+
     clearCart() {
         localStorage.removeItem("products");
     }

@@ -1,10 +1,10 @@
 const notifications = {
     showNotification(text, duration) {
-        $(`<div class="notification"> ${text} </div>`)
-            .appendTo("body")
+        $("#dialog").html(text)
+            .prop("hidden", false)
             .delay(duration)
             .queue(function () {
-                $(this).remove();
+                $(this).prop("hidden", true);
             });
     }
 };
