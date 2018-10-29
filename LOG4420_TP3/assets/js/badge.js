@@ -5,9 +5,11 @@ const badge = {
         this.updateBadgeWithQuantity(itemCount);
     },
     updateBadgeWithQuantity(quantity) {
-        $(".count").remove();
         if (quantity) {
-            $(".shopping-cart").append(`<span class="count">${quantity}</span>`);
+            $(".count").prop("hidden", false);
+            $(".count").html(quantity);
+        } else {
+            $(".count").prop("hidden", true);
         }
     }
 };

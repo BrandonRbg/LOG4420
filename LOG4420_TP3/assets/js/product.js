@@ -45,7 +45,7 @@ function renderProduct(product) {
                         <i class="fa fa-cart-plus"></i>&nbsp; Ajouter
                     </button>
                 </form>
-                <p id="product-price">Prix: <strong>${product.price}&thinsp;$</strong></p>
+                <p id="product-price">Prix: <strong>${product.price.toFixed(2).replace(".", ",")}&thinsp;$</strong></p>
             </div>
         </div>
         ` : `<h1>Page non trouvée!</h1>`);

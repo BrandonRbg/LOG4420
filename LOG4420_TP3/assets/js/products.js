@@ -56,7 +56,7 @@ function renderProducts(products) {
               <a href="./product.html?id=${product.id}" title="En savoir plus...">
                 <h2>${product.name}</h2>
                 <img alt="${product.name}" src="./assets/img/${product.image}">
-                <p class="price"><small>Prix</small> ${product.price}&thinsp;$</p>
+                <p class="price"><small>Prix</small> ${product.price.toFixed(2).replace(".", ",")}&thinsp;$</p>
               </a>
             </div>
         `);

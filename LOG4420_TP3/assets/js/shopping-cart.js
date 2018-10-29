@@ -1,23 +1,23 @@
 $(document).ready(() => {
     $("#empty-btn").click(e => {
-        write("products", []);
+        storage.write("products", []);
         reset();
     });
 
     async function setTotal() {
         const items = await getAllProducts();
-        const data = getProductsInCard();
+        const data = storage.getProductsInCard();
         const products = items.filter(a => data.some(x => {
-            a.quantity = x.quantity;
-            return x.id === a.id
+            a.quantity = +x.quantity;
+            return +x.id === +a.id
         }));
 
         let total = 0;
         for (const product of products) {
-            total += product.quantity * product.price;
+            total += +product.quantity * +product.price;
         }
 
-        $("#total").html(`${total.toFixed(2)} $`);
+        $("#total").html(`${total.toFixed(2).replace(".", ",")} $`);
     }
 
     async function getAllProducts() {
@@ -27,7 +27,7 @@ $(document).ready(() => {
 
     async function getOneProduct(id) {
         const products = await getAllProducts();
-        return products.find(x => x.id === id);
+        return products.find(x => +x.id === +id);
     }
 
     async function reset() {
@@ -38,15 +38,15 @@ $(document).ready(() => {
     async function createTable() {
         const res = await fetch("http://localhost:8000/data/products.json");
         const products = await res.json();
-        const data = getProductsInCard();
+        const data = storage.getProductsInCard();
         const items = products.filter(a => data.some(x => {
-            a.quantity = x.quantity;
-            return x.id === a.id
+            a.quantity = +x.quantity;
+            return +x.id === +a.id
         }));
 
         let total = 0;
         for (const item of items) {
-            total += item.quantity * item.price;
+            total += +item.quantity * +item.price;
             $("#card-body").append(createTableRow(item));
             checkButtons(item);
         }
@@ -73,7 +73,7 @@ $(document).ready(() => {
         return `<tr id="${item.id}">
                 <td><button class="remove-product" title="Supprimer" data-id="${item.id}"><i class="fa fa-times"></i></button></td>
                 <td><a href="./product.html?id=${item.id}">${item.name}</a></td>
-                <td>${item.price}&thinsp;$</td>
+                <td>${item.price.toFixed(2).replace(".", ",")}&thinsp;$</td>
                 <td>
                     <div class="row">
                         <div class="col">
@@ -85,26 +85,8 @@ $(document).ready(() => {
                         </div>
                     </div>
                 </td>
-                <td id="total-${item.id}">${item.quantity * item.price}&thinsp;$</td>
+                <td id="total-${item.id}">${(item.quantity * item.price).toFixed(2).replace(".", ",")}&thinsp;$</td>
             </tr>`;
-    }
-
-    function write(key, data) {
-        localStorage.setItem(key, JSON.stringify(data));
-    }
-
-    function read(key) {
-        const data = localStorage.getItem(key);
-        return data ? JSON.parse(data) : [];
-    }
-
-    function addProductToCard(id) {
-        const data = read("products");
-        data.push(id);
-    }
-
-    function getProductsInCard() {
-        return read("products");
     }
 
     function checkButtons(product) {
@@ -116,29 +98,31 @@ $(document).ready(() => {
     }
 
     async function editQuantity(id, value) {
-        const data = getProductsInCard();
+        const data = storage.getProductsInCard();
         const product = await getOneProduct(id);
         for (const item of data) {
-            if (item.id === id) {
-                item.quantity += value;
-                product.quantity = item.quantity;
+            if (+item.id === +id) {
+                item.quantity += +value;
+                product.quantity = +item.quantity;
             }
         }
-        write("products", data);
+        storage.write("products", data);
         $(`#quantity-${id}`).html(product.quantity);
-        $(`#total-${id}`).html(`${(product.quantity * product.price).toFixed(2)} $`);
+        $(`#total-${id}`).html(`${(+product.quantity * +product.price).toFixed(2).replace(".", ",")} $`);
         checkButtons(product);
         setTotal();
+        badge.updateBadge();
     }
 
     function removeProduct(id) {
-        const items = getProductsInCard();
+        const items = storage.getProductsInCard();
         const product = items.find(x => x.id === id);
         items.splice(items.indexOf(product));
-        write("products", items);
+        storage.write("products", items);
 
         $(`#${id}`).remove();
         setTotal();
+        badge.updateBadge();
     }
 
     createTable();
