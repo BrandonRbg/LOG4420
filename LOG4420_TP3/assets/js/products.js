@@ -22,11 +22,6 @@ function isSorting(toggle) {
         .includes(toggle);
 }
 
-function fetchProducts() {
-    return fetch("data/products.json")
-        .then(r => r.json());
-}
-
 function sortProducts(products) {
     return products
         .sort((p1, p2) => {
@@ -56,7 +51,7 @@ function renderProducts(products) {
               <a href="./product.html?id=${product.id}" title="En savoir plus...">
                 <h2>${product.name}</h2>
                 <img alt="${product.name}" src="./assets/img/${product.image}">
-                <p class="price"><small>Prix</small> ${product.price.toFixed(2).replace(".", ",")}&thinsp;$</p>
+                <p class="price"><small>Prix</small> ${utils.formatCurrency(product.price)}&thinsp;$</p>
               </a>
             </div>
         `);
@@ -64,7 +59,7 @@ function renderProducts(products) {
 }
 
 function reloadProducts() {
-    fetchProducts()
+    service.getAllProducts()
         .then(p => sortProducts(p))
         .then(p => filterProducts(p))
         .then(p => {

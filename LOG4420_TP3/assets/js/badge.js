@@ -1,6 +1,6 @@
 const badge = {
-    updateBadge(itemCount) {
-        itemCount = itemCount ? itemCount : storage.getProductsInCard()
+    updateBadge() {
+        const itemCount = storage.getProductsInCard()
             .reduce((count, p) => count + p.quantity, 0);
         this.updateBadgeWithQuantity(itemCount);
     },
@@ -9,8 +9,7 @@ const badge = {
             $(".count").prop("hidden", false)
                 .html(quantity);
         } else {
-            $(".count").prop("hidden", true)
-                .html("");
+            $(".count").prop("hidden", true);
         }
     }
 };

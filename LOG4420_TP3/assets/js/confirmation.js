@@ -3,8 +3,8 @@ function init() {
         const lastOrder = storage.getLastOrder();
         if (lastOrder) {
             $("article").append(`
-                <h1>Votre commande est confirmée ${lastOrder.firstName} ${lastOrder.lastName}!</h1>
-                <p>Votre numéro de confirmation est le <strong>${lastOrder.id}</strong>.</p>
+                <h1 id="name">Votre commande est confirmée ${lastOrder.firstName} ${lastOrder.lastName}!</h1>
+                <p id="confirmation-number">Votre numéro de confirmation est le <strong>${lastOrder.id}</strong>.</p>
             `);
         }
     });
