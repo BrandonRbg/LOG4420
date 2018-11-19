@@ -28,5 +28,4 @@ mongoose.model("Product", Product);
 
 mongoose.Promise = global.Promise;
 
-// TODO: Initialiser la connexion avec le "connect string" de votre base de données.
-//mongoose.connect("mongodb://...", { useMongoClient: true });
+mongoose.connect("mongodb://root:123456Ab@ds111244.mlab.com:11244/log4420-tp4", { useMongoClient: true });
