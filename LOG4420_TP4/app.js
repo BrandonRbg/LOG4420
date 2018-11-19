@@ -7,7 +7,6 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 
 require("./lib/db");
-const index = require("./routes/index");
 
 const app = express();
 
@@ -34,7 +33,11 @@ app.use(session({
   cookie: { secure: false }
 }));
 
+const index = require("./routes/index");
+const products = require("./routes/products");
+
 app.use("/", index);
+app.use("/produits", products);
 
 // catch 404 and forward to error handler
 app.use((req, res, next)=> {

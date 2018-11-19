@@ -12,19 +12,7 @@ const Order = new Schema({
   products: Array
 }, { versionKey: false });
 
-
-const Product = new Schema({
-  id: { type: Number, unique: true },
-  name: String,
-  price: Number,
-  image: String,
-  category: String,
-  description: String,
-  features: Array
-}, { versionKey: false });
-
 mongoose.model("Order", Order);
-mongoose.model("Product", Product);
 
 mongoose.Promise = global.Promise;
 
