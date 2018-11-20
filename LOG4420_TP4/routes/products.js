@@ -16,6 +16,10 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
+  if (isNaN(req.params["id"])) {
+    return res.status(404).end();
+  }
+
   const result = await service.getById(+req.params["id"]);
   if (result) {
     res.status(200).json(result);

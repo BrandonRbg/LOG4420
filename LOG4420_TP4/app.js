@@ -35,9 +35,21 @@ app.use(session({
 
 const index = require("./routes/index");
 const products = require("./routes/products");
+const shoppingCard = require("./routes/shopping-card");
+
+app.use((req, res, next) => {
+  if (req.session) {
+    if (!req.session.cartItems) {
+      req.session.cartItems = [];
+    }
+  }
+
+  next();
+});
 
 app.use("/", index);
 app.use("/api/products", products);
+app.use("/api/shopping-cart", shoppingCard);
 
 // catch 404 and forward to error handler
 app.use((req, res, next)=> {
