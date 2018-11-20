@@ -35,9 +35,11 @@ app.use(session({
 
 const index = require("./routes/index");
 const products = require("./routes/products");
+const orders = require("./routes/orders");
 
 app.use("/", index);
 app.use("/api/products", products);
+app.use("/api/orders", orders);
 
 // catch 404 and forward to error handler
 app.use((req, res, next)=> {
