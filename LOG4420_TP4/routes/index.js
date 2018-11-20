@@ -21,4 +21,9 @@ router.get("/contact", (req, res) => {
   res.render("contact");
 });
 
+
+router.get("/commande", (req, res) => {
+  res.render("order");
+});
+
 module.exports = router;
