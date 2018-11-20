@@ -1,8 +1,10 @@
 const express = require("express");
 const router = express.Router({});
 const ProductsService = require("../services/products");
+const OrdersService = require("../services/orders");
 
 const services = new ProductsService();
+const ordersService = new OrdersService();
 
 function getItemCount(cartItems) {
   let total = 0;
@@ -49,6 +51,17 @@ router.get("/404", (req, res) => {
 
 router.get("/commande", (req, res) => {
   res.render("order", { itemCount: getItemCount(req.session.cartItems) });
+});
+
+router.get("/confirmation", async (req, res) => {
+  const orders = await ordersService.getAll();
+  const ordersCount = orders.length;
+  const lastOrder = orders[ordersCount - 1];
+  console.log(orders);
+  res.render("confirmation", {
+    confirmationNumber: ordersCount.toString().padStart(4, "0"),
+    lastOrder: lastOrder || {}
+  });
 });
 
 router.get("/panier", async (req, res) => {

@@ -91,11 +91,6 @@ class OrdersService {
         "prop": "products",
         "error": "Products must be defined"
       });
-    } else if (order.products.length === 0) {
-      errors.push({
-        "prop": "products",
-        "error": "Products must not be empty"
-      });
     } else if (!order.products.every(p => p.id && Number.isInteger(p.id) && p.quantity && Number.isInteger(p.quantity) && p.quantity > 0)) {
       errors.push({
         "prop": "products",
