@@ -37,7 +37,7 @@ const index = require("./routes/index");
 const products = require("./routes/products");
 
 app.use("/", index);
-app.use("/produits", products);
+app.use("/api/products", products);
 
 // catch 404 and forward to error handler
 app.use((req, res, next)=> {
