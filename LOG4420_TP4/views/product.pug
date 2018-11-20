@@ -14,7 +14,7 @@ block content
           h2 Caractéristiques
           ul#product-features
             each feature in product.features
-              li #{feature}
+              li !{feature}
         hr
         form#add-to-cart-form.pull-right(data-product-id=product.id)
           label(for='product-quantity') Quantité:

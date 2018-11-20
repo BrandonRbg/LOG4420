@@ -35,7 +35,7 @@ app.use(session({
 
 const index = require("./routes/index");
 const products = require("./routes/products");
-const shoppingCard = require("./routes/shopping-card");
+const shoppingCard = require("./routes/shopping-cart");
 const orders = require("./routes/orders");
 
 app.use((req, res, next) => {

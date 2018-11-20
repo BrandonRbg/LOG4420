@@ -224,6 +224,14 @@ class ProductsService {
     return applySortingCriteria(res, criteria);
   };
 
+  getAllFromIds(ids) {
+    return Model.find({
+      id: {
+        $in: ids
+      }
+    }).exec();
+  }
+
   async getById(id) {
     return await Model.findOne({
       id

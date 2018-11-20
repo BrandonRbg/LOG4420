@@ -42,4 +42,13 @@ router.get("/commande", (req, res) => {
   res.render("order");
 });
 
+router.get("/panier", async (req, res) => {
+  const cartItems = req.session.cartItems;
+  const products = await services.getAllFromIds(cartItems.map(value => value.productId));
+  cartItems.forEach(item => {
+    item.product = products.find(value => value.id === item.productId);
+  });
+  res.render("shopping-cart", { title: "Panier", products: cartItems });
+});
+
 module.exports = router;
