@@ -4,17 +4,26 @@ const ProductsService = require("../services/products");
 
 const services = new ProductsService();
 
+function getItemCount(cartItems) {
+  let total = 0;
+  for (const item of cartItems) {
+    total += item.quantity;
+  }
+
+  return total;
+}
+
 router.get("/", (req, res) => {
-  res.render("index", { title: "Accueil" });
+  res.render("index", { title: "Accueil", itemCount: getItemCount(req.session.cartItems), tab: "index" });
 });
 
 router.get("/accueil", (req, res) => {
-  res.render("index", { title: "Accueil" });
+  res.render("index", { title: "Accueil", itemCount: getItemCount(req.session.cartItems), tab: "index" });
 });
 
 router.get("/produits", async (req, res) => {
   const products = await services.getAll();
-  res.render("products", { title: "Produits", products });
+  res.render("products", { title: "Produits", products, itemCount: getItemCount(req.session.cartItems), tab: "products" });
 });
 
 router.get("/produits/:id", async (req, res) => {
@@ -27,19 +36,19 @@ router.get("/produits/:id", async (req, res) => {
     return res.redirect("/404");
   }
 
-  return res.render("product", { title: "Produit", product });
+  return res.render("product", { title: "Produit", product, itemCount: getItemCount(req.session.cartItems), tab: "products" });
 });
 
 router.get("/contact", (req, res) => {
-  res.render("contact");
+  res.render("contact", { itemCount: getItemCount(req.session.cartItems), tab: "contact" });
 });
 
 router.get("/404", (req, res) => {
-  return res.render("404", {title: "Page non trouvée!"});
+  return res.render("404", {title: "Page non trouvée!", itemCount: getItemCount(req.session.cartItems)});
 });
 
 router.get("/commande", (req, res) => {
-  res.render("order");
+  res.render("order", { itemCount: getItemCount(req.session.cartItems) });
 });
 
 router.get("/panier", async (req, res) => {
@@ -48,7 +57,7 @@ router.get("/panier", async (req, res) => {
   cartItems.forEach(item => {
     item.product = products.find(value => value.id === item.productId);
   });
-  res.render("shopping-cart", { title: "Panier", products: cartItems });
+  res.render("shopping-cart", { title: "Panier", products: cartItems, itemCount: getItemCount(req.session.cartItems) });
 });
 
 module.exports = router;

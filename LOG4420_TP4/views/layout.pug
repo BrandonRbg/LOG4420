@@ -13,18 +13,21 @@ html
             img(alt='logo', src='/assets/img/logo.svg', title='Accueil')
         nav
           ul
-            li.active
+            li(class=tab === 'index' ? "active" : "")
               a(href='/accueil') Accueil
-            li
+            li(class=tab === 'products' ? "active" : "")
               a(href='/produits') Produits
-            li
+            li(class=tab === 'contact' ? "active" : "")
               a(href='/contact') Contact
             li
               a.shopping-cart(href='/panier', title='Panier')
                 span.fa-stack.fa-lg
                   i.fa.fa-circle.fa-stack-2x.fa-inverse
                   i.fa.fa-shopping-cart.fa-stack-1x
-                span.count(hidden='')
+                if itemCount === 0
+                  span.count #{itemCount}
+                else
+                  span.count.visible #{itemCount}
     main
       block content
     footer

@@ -4,43 +4,46 @@ block content
   article
     h1 Panier
     #shopping-cart-container
-      table.table.shopping-cart-table
-        thead
-          tr
-            th
-            th Produit
-            th Prix unitaire
-            th Quantité
-            th Prix
-        tbody
-          - var total = 0
-          each item in products
-            - total += item.product.price * item.quantity
-            tr(data-product-id=item.productId)
-              td
-                button.remove-item-button(title='Supprimer')
-                  i.fa.fa-times
-              td
-                a(href='/produits/' + item.product.id) #{item.product.name}
-              td
-                | #{item.product.price.toFixed(2).replace(".", ",")}$
-              td
-                .row
-                  .col
-                    button.remove-quantity-button(title='Retirer', disabled=item.quantity === 1)
-                      i.fa.fa-minus
-                  .col.quantity #{item.quantity}
-                  .col
-                    button.add-quantity-button(title='Ajouter')
-                      i.fa.fa-plus
-              td.price
-                | #{(item.product.price * item.quantity).toFixed(2).replace(".", ",")}$
-      p.shopping-cart-total
-        | Total:
-        strong#total-amount #{total.toFixed(2).replace(".", ",")}
-      a.btn.pull-right(href='./order.html')
-        | Commander
-        i.fa.fa-angle-double-right
-      button#remove-all-items-button.btn
-        i.fa.fa-trash-o
-        |   Vider le panier
+      if products.length  > 0
+        table.table.shopping-cart-table
+          thead
+            tr
+              th
+              th Produit
+              th Prix unitaire
+              th Quantité
+              th Prix
+          tbody
+            - var total = 0
+            each item in products
+              - total += item.product.price * item.quantity
+              tr(data-product-id=item.productId)
+                td
+                  button.remove-item-button(title='Supprimer')
+                    i.fa.fa-times
+                td
+                  a(href='/produits/' + item.product.id) #{item.product.name}
+                td
+                  | #{item.product.price.toFixed(2).replace(".", ",")}$
+                td
+                  .row
+                    .col
+                      button.remove-quantity-button(title='Retirer', disabled=item.quantity === 1)
+                        i.fa.fa-minus
+                    .col.quantity #{item.quantity}
+                    .col
+                      button.add-quantity-button(title='Ajouter')
+                        i.fa.fa-plus
+                td.price
+                  | #{(item.product.price * item.quantity).toFixed(2).replace(".", ",")}$
+        p.shopping-cart-total
+          | Total:
+          strong#total-amount #{total.toFixed(2).replace(".", ",")}
+        a.btn.pull-right(href='./order.html')
+          | Commander
+          i.fa.fa-angle-double-right
+        button#remove-all-items-button.btn
+          i.fa.fa-trash-o
+          |   Vider le panier
+      else
+        p Aucun produit dans le panier.
