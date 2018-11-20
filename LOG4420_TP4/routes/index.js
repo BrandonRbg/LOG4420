@@ -35,7 +35,11 @@ router.get("/contact", (req, res) => {
 });
 
 router.get("/404", (req, res) => {
-  return res.render("404", { title: "Page non trouvée!" });
+  return res.render("404", {title: "Page non trouvée!"});
+});
+
+router.get("/commande", (req, res) => {
+  res.render("order");
 });
 
 module.exports = router;

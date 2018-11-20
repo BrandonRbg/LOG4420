@@ -17,7 +17,7 @@ const Product = new Schema({
 const Model = mongoose.model("Product", Product);
 
 /**
- * Applies a sorting criteria to the specified products list.
+ * Applies a sorting criteria to the specified 5products list.
  *
  * @param products          The product list to sort.
  * @param sortingCriteria   The sorting criteria to use. The available values are:
