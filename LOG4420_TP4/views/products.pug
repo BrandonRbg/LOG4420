@@ -23,12 +23,12 @@ block content
     #products-list.products
       each product in products
         .product(data-product-id=product.id)
-          a(href="/product#{product.id}" title="En savoir plus...")
+          a(href="/produits/" + product.id title="En savoir plus...")
             h2 #{product.name}
             img(alt="product" src="/assets/img/" + product.image)
             p.price
               small Prix
-              | #{product.price.toFixed(2)} $
+              | #{product.price.toFixed(2).replace(".", ",")} $
 
 block script
   script(type='text/javascript', src='/assets/scripts/products.controller.js')

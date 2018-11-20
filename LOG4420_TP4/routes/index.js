@@ -17,12 +17,25 @@ router.get("/produits", async (req, res) => {
   res.render("products", { title: "Produits", products });
 });
 
-router.get("/produits/:id", (req, res) => {
-  res.render("product", { title: "Produit" });
+router.get("/produits/:id", async (req, res) => {
+  if (isNaN(req.params.id)) {
+    return res.redirect("/404");
+  }
+
+  const product = await services.getById(req.params.id);
+  if (!product) {
+    return res.redirect("/404");
+  }
+
+  return res.render("product", { title: "Produit", product });
 });
 
 router.get("/contact", (req, res) => {
   res.render("contact");
+});
+
+router.get("/404", (req, res) => {
+  return res.render("404", { title: "Page non trouvée!" });
 });
 
 module.exports = router;
