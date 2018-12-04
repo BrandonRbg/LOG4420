@@ -2,8 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product, ProductsService } from '../services/products.service';
 import { ShoppingCartService } from '../services/shopping-cart.service';
-import { map } from 'rxjs/operators';
-import { Subscription } from 'rxjs';
+import { delay, map, tap } from 'rxjs/operators';
+import { Observable, of, Subscription } from 'rxjs';
 
 /**
  * Defines the component responsible to manage the product page.
@@ -17,6 +17,7 @@ export class ProductComponent implements OnInit, OnDestroy {
     public product: Product;
     public addToCartQuantity = 1;
     public isItemInShoppingCart = false;
+    public showDialog = false;
 
     private shoppingCartSubscription$: Subscription;
 
@@ -31,7 +32,8 @@ export class ProductComponent implements OnInit, OnDestroy {
     async ngOnInit() {
         const productId = this.route.snapshot.paramMap.get('id');
         this.shoppingCartSubscription$ = this.shoppingCartService.shoppingCartUpdates$.pipe(
-            map((items) => items.find(i => i.productId === +productId) !== null)
+            tap((items) => console.log(items)),
+            map((items) => !!items.find(i => i.productId === +productId))
         ).subscribe(contains => {
             this.isItemInShoppingCart = contains;
         });
@@ -61,5 +63,7 @@ export class ProductComponent implements OnInit, OnDestroy {
                 quantity: this.addToCartQuantity
             });
         }
+        this.showDialog = true;
+        setTimeout(() => this.showDialog = false, 5000);
     }
 }

@@ -30,7 +30,7 @@
             <p>Prix: <strong id="product-price">{{ product?.price | frenchNumber }}&thinsp;$</strong></p>
         </div>
     </div>
-    <div class="dialog" id="dialog" *ngIf="false">
+    <div class="dialog" id="dialog" [hidden]="!showDialog">
         Le produit a été ajouté au panier.
     </div>
 </article>

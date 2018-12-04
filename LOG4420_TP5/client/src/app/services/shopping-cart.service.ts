@@ -16,22 +16,32 @@ export class ShoppingCartService {
     public shoppingCartUpdates$ = new BehaviorSubject<ShoppingCartItem[]>([]);
 
     constructor(private httpClient: HttpClient) {
+        this.init();
+    }
+
+    async init() {
+        this.shoppingCartUpdates$.next(await this.getAll());
     }
 
     getAll(): Promise<ShoppingCartItem[]> {
-        return this.httpClient.get<ShoppingCartItem[]>(`${Config.apiUrl}/shopping-cart`)
-            .toPromise();
+        return this.httpClient.get<ShoppingCartItem[]>(`${Config.apiUrl}/shopping-cart`, {
+            withCredentials: true
+        }).toPromise();
     }
 
     async addItem(item: ShoppingCartItem): Promise<void> {
-        await this.httpClient.post<void>(`${Config.apiUrl}/shopping-cart`, item)
-            .toPromise();
+        await this.httpClient.post<void>(`${Config.apiUrl}/shopping-cart`, item, {
+            withCredentials: true
+        }).toPromise();
         this.shoppingCartUpdates$.next(await this.getAll());
     }
 
     async updateItem(item: ShoppingCartItem): Promise<void> {
-        await this.httpClient.put<void>(`${Config.apiUrl}/shopping-cart/${item.productId}`, { quantity: item.quantity })
-            .toPromise();
+        await this.httpClient.put<void>(`${Config.apiUrl}/shopping-cart/${item.productId}`, {
+            quantity: item.quantity
+        }, {
+            withCredentials: true
+        }).toPromise();
         this.shoppingCartUpdates$.next(await this.getAll());
     }
 }

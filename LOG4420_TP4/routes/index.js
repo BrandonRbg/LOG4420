@@ -57,7 +57,6 @@ router.get("/confirmation", async (req, res) => {
   const orders = await ordersService.getAll();
   const ordersCount = orders.length;
   const lastOrder = orders[ordersCount - 1];
-  console.log(orders);
   res.render("confirmation", {
     confirmationNumber: ordersCount.toString().padStart(4, "0"),
     lastOrder: lastOrder || {}
