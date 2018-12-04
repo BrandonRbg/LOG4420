@@ -15,15 +15,15 @@
             <section>
                 <h2>Caractéristiques</h2>
                 <ul id="product-features">
-                    <li *ngFor="let feature of product?.features">{{ feature }}</li>
+                    <li *ngFor="let feature of product?.features" [innerHtml]="feature"></li>
                 </ul>
             </section>
             <hr>
-            <form class="pull-right" id="add-to-cart-form">
+            <form class="pull-right" id="add-to-cart-form" (submit)="addToCart()">
                 <label for="product-quantity">Quantité:</label>
                 <input class="form-control" id="product-quantity" name="product-quantity"
                        type="number" value="1" min="1" [(ngModel)]="addToCartQuantity" required>&nbsp;
-                <button class="btn" title="Ajouter au panier" type="submit" (click)="addToCart()">
+                <button class="btn" title="Ajouter au panier" type="submit">
                     <i class="fa fa-cart-plus"></i>&nbsp; Ajouter
                 </button>
             </form>

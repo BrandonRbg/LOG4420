@@ -44,4 +44,18 @@ export class ShoppingCartService {
         }).toPromise();
         this.shoppingCartUpdates$.next(await this.getAll());
     }
+
+    async removeItem(item: ShoppingCartItem) {
+        await this.httpClient.delete(`${Config.apiUrl}/shopping-cart/${item.productId}`, {
+            withCredentials: true
+        }).toPromise();
+        this.shoppingCartUpdates$.next(await this.getAll());
+    }
+
+    async removeAll() {
+        await this.httpClient.delete(`${Config.apiUrl}/shopping-cart`, {
+            withCredentials: true
+        }).toPromise();
+        this.shoppingCartUpdates$.next(await this.getAll());
+    }
 }

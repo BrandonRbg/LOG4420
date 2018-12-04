@@ -32,7 +32,6 @@ export class ProductComponent implements OnInit, OnDestroy {
     async ngOnInit() {
         const productId = this.route.snapshot.paramMap.get('id');
         this.shoppingCartSubscription$ = this.shoppingCartService.shoppingCartUpdates$.pipe(
-            tap((items) => console.log(items)),
             map((items) => !!items.find(i => i.productId === +productId))
         ).subscribe(contains => {
             this.isItemInShoppingCart = contains;
