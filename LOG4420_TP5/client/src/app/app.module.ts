@@ -18,6 +18,7 @@ import { ProductsService } from './services/products.service';
 import localeFr from '@angular/common/locales/fr-CA';
 import { registerLocaleData } from '@angular/common';
 import { FrenchNumberPipe } from './pipes/french-number.pipe';
+import { OrderNumberPipe } from './pipes/order-number.pipe';
 
 registerLocaleData(localeFr);
 
@@ -45,7 +46,8 @@ const appRoutes: Routes = [
         OrderComponent,
         ConfirmationComponent,
         PageNotFoundComponent,
-        FrenchNumberPipe
+        FrenchNumberPipe,
+        OrderNumberPipe
     ],
     imports: [
         BrowserModule,

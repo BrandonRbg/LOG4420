@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Order, OrderService } from '../services/order.service';
+import { ShoppingCartService } from '../services/shopping-cart.service';
+import { Router } from '@angular/router';
 
 declare const $: any;
 
@@ -9,14 +12,28 @@ declare const $: any;
     selector: 'order',
     templateUrl: './order.component.html'
 })
-export class OrderComponent implements OnInit {
-
+export class OrderComponent implements OnInit, AfterViewInit {
     orderForm: any;
+    order: Order = {} as Order;
+
+    constructor(private orderService: OrderService, private shoppingCartService: ShoppingCartService, private router: Router) {}
 
     /**
      * Occurs when the component is initialized.
      */
-    ngOnInit() {
+    async ngOnInit() {
+        const items = await this.shoppingCartService.getAll();
+        this.order = {
+            products: items.map(x => {
+                return {
+                    id: x.productId,
+                    quantity: x.quantity
+                };
+            })
+        } as Order;
+    }
+
+    ngAfterViewInit() {
         // Initializes the validation of the form. This is the ONLY place where jQuery usage is allowed.
         this.orderForm = $('#order-form');
         $.validator.addMethod('ccexp', function (value) {
@@ -46,10 +63,21 @@ export class OrderComponent implements OnInit {
     /**
      * Submits the order form.
      */
-    submit() {
+    async submit() {
         if (!this.orderForm.valid()) {
             return;
         }
-        // TODO: Compléter la soumission des informations lorsque le formulaire soumis est valide.
+        try {
+            this.order.id = await this.orderService.getNextId();
+            await this.orderService.create(this.order);
+            await this.shoppingCartService.removeAll();
+            await this.router.navigate(['/confirmation'], {
+                queryParams: {
+                    orderId: this.order.id
+                }
+            });
+        } catch (e) {
+            console.log(e);
+        }
     }
 }
