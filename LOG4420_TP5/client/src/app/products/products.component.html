@@ -1,0 +1,38 @@
+<section class="sidebar" aria-label="Filtres">
+    <section>
+        <h2>Catégories</h2>
+        <div class="btn-group vertical" id="product-categories">
+            <button *ngFor="let category of categories"
+                    [class.selected]="isCategorySelected(category.id)"
+                    (click)="selectCategory(category.id)">
+                {{ category.name }}
+            </button>
+        </div>
+    </section>
+    <section>
+        <h2>Classement</h2>
+        <div class="btn-group vertical" id="product-criteria">
+            <button *ngFor="let criteria of sortingCriterias"
+                    [class.selected]="isCriteriaSelected(criteria.id)"
+                    (click)="selectCriteria(criteria.id)">
+                {{ criteria.name}}
+            </button>
+        </div>
+    </section>
+</section>
+<article>
+    <span class="right-header" id="products-count">{{ products.length }} produits</span>
+    <h1>Produits</h1>
+    <div class="products" id="products-list">
+        <div class="product" *ngFor="let product of products">
+            <a [routerLink]="getProductLink(product)" title="En savoir plus...">
+                <h2>{{ product.name }}</h2>
+                <img [alt]="product.name" [src]="getProductImageUrl(product)">
+                <p>
+                    <small>Prix</small>
+                    {{ product.price | frenchNumber }}&thinsp;$
+                </p>
+            </a>
+        </div>
+    </div>
+</article>
